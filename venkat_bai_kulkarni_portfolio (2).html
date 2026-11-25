@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Personal portfolio of Venkat Bai Kulkarni, Computer Science and Engineering student specializing in software development, AI, and DevOps." />
+  <title>Venkat Bai Kulkarni | CSE Portfolio</title>
+
+  <!-- Google Fonts: Inter & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome for clean icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          },
+          colors: {
+            slateDark: '#090d16',
+            cardDark: '#111827',
+            emeraldAccent: '#10b981',
+            skyAccent: '#38bdf8',
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-[#080c16] dark:text-slate-100 font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-300 transition-colors duration-300 overflow-x-hidden">
+
+  <!-- Ambient Background Glow -->
+  <div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+    <div class="absolute -top-32 right-0 w-[30rem] h-[30rem] rounded-full bg-emerald-500/10 dark:bg-emerald-500/10 blur-3xl"></div>
+    <div class="absolute top-1/3 -left-32 w-[28rem] h-[28rem] rounded-full bg-sky-500/10 dark:bg-sky-500/10 blur-3xl"></div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-white/80 dark:bg-[#080c16]/85 border-b border-slate-200/80 dark:border-slate-800/80">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between" aria-label="Primary Navigation">
+      <!-- Brand Logo -->
+      <a href="#home" class="font-display text-xl sm:text-2xl font-bold tracking-tight flex items-center gap-2 group">
+        <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 to-sky-500 text-slate-950 flex items-center justify-center font-bold text-base shadow-md group-hover:scale-105 transition-transform">
+          VBK
+        </span>
+        <span>Venkat<span class="text-emerald-500">.</span></span>
+      </a>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center gap-7">
+        <a href="#home" class="nav-link text-sm font-medium text-emerald-500 transition-colors">Home</a>
+        <a href="#about" class="nav-link text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">About</a>
+        <a href="#education" class="nav-link text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Education</a>
+        <a href="#skills" class="nav-link text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Skills</a>
+        <a href="#projects" class="nav-link text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Projects</a>
+        <a href="#contact" class="nav-link text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Contact</a>
+
+        <!-- Theme Toggle Button -->
+        <button id="themeToggle" aria-label="Toggle color theme" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-emerald-500 transition-all">
+          <i id="themeIcon" class="fa-solid fa-sun text-sm"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Controls -->
+      <div class="flex items-center gap-2 md:hidden">
+        <button id="themeToggleMobile" aria-label="Toggle color theme" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300">
+          <i id="themeIconMobile" class="fa-solid fa-sun text-sm"></i>
+        </button>
+        <button id="mobileMenuBtn" aria-label="Open navigation menu" aria-expanded="false" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-200">
+          <i id="mobileMenuIcon" class="fa-solid fa-bars text-base"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0b101d] px-6 py-5 space-y-3">
+      <a href="#home" class="mobile-nav-link block py-2 text-base font-medium text-emerald-500">Home</a>
+      <a href="#about" class="mobile-nav-link block py-2 text-base font-medium text-slate-700 dark:text-slate-300">About</a>
+      <a href="#education" class="mobile-nav-link block py-2 text-base font-medium text-slate-700 dark:text-slate-300">Education</a>
+      <a href="#skills" class="mobile-nav-link block py-2 text-base font-medium text-slate-700 dark:text-slate-300">Skills</a>
+      <a href="#projects" class="mobile-nav-link block py-2 text-base font-medium text-slate-700 dark:text-slate-300">Projects</a>
+      <a href="#contact" class="mobile-nav-link block py-2 text-base font-medium text-slate-700 dark:text-slate-300">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="pt-14 pb-20 sm:pt-24 sm:pb-28 scroll-mt-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <!-- Left Column -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-600 dark:text-emerald-400 text-xs sm:text-sm font-semibold tracking-wide">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              Computer Science & Engineering Student
+            </div>
+
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
+              Hello, I'm <br />
+              <span class="bg-gradient-to-r from-emerald-400 via-teal-400 to-sky-400 bg-clip-text text-transparent">
+                Venkat Bai Kulkarni.
+              </span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+              Curious engineering student interested in software development, artificial intelligence, and building practical technology solutions. Learning by creating projects and exploring new ideas, with a focus on strengthening problem-solving skills and turning ideas into useful applications.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <a href="#projects" class="px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-sm sm:text-base shadow-lg shadow-emerald-500/20 hover:-translate-y-0.5 transition-all inline-flex items-center gap-2">
+                <span>Explore My Projects</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+              </a>
+              <a href="#contact" class="px-6 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-emerald-500 dark:hover:border-emerald-400 text-slate-800 dark:text-slate-200 font-semibold text-sm sm:text-base hover:-translate-y-0.5 transition-all">
+                Get in Touch
+              </a>
+            </div>
+
+            <!-- Focus Pill Tags -->
+            <div class="pt-4 flex flex-wrap gap-2">
+              <span class="text-xs font-medium px-3 py-1 rounded-lg bg-slate-200/70 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300">Software Engineering</span>
+              <span class="text-xs font-medium px-3 py-1 rounded-lg bg-slate-200/70 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300">AI-Powered Applications</span>
+              <span class="text-xs font-medium px-3 py-1 rounded-lg bg-slate-200/70 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300">Prompt Engineering</span>
+              <span class="text-xs font-medium px-3 py-1 rounded-lg bg-slate-200/70 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300">DevOps</span>
+            </div>
+          </div>
+
+          <!-- Right Profile Card -->
+          <div class="lg:col-span-5">
+            <div class="relative rounded-3xl p-7 sm:p-8 bg-white dark:bg-[#0f1626] border border-slate-200 dark:border-slate-800 shadow-xl">
+              <div class="flex items-center gap-5 mb-6">
+                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-400 to-sky-500 flex items-center justify-center text-slate-950 font-display font-bold text-2xl shadow-lg shrink-0">
+                  VBK
+                </div>
+                <div>
+                  <h2 class="font-display text-xl font-bold">Learning. Building. Improving.</h2>
+                  <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">B.E. CSE @ Navodaya Institute of Technology (VTU)</p>
+                </div>
+              </div>
+
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                Focused on strengthening problem-solving skills and turning real-world ideas into practical, accessible software applications.
+              </p>
+
+              <!-- Stats Grid -->
+              <div class="grid grid-cols-2 gap-3.5 mb-6">
+                <div class="p-4 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-slate-200/70 dark:border-slate-800">
+                  <div class="font-display text-2xl font-bold text-emerald-500">2028</div>
+                  <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Expected Graduation</div>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-slate-200/70 dark:border-slate-800">
+                  <div class="font-display text-2xl font-bold text-sky-400">7.83</div>
+                  <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Current CGPA</div>
+                </div>
+              </div>
+
+              <!-- Quick Location & Status -->
+              <div class="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400">
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-emerald-500"></i> India</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-language text-sky-400"></i> English, Kannada</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-slate-100/70 dark:bg-[#0b101d]/70 border-y border-slate-200/70 dark:border-slate-800/60 scroll-mt-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mb-12">
+          <span class="text-xs font-bold uppercase tracking-widest text-emerald-500">A Little About Me</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold mt-2">About Me</h2>
+          <p class="text-slate-600 dark:text-slate-400 mt-3">
+            A student who believes consistent learning and hands-on practice are the foundation of good engineering.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Narrative Bio -->
+          <div class="lg:col-span-7 rounded-2xl p-6 sm:p-8 bg-white dark:bg-[#0f1626] border border-slate-200 dark:border-slate-800 shadow-sm space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p>
+              I am pursuing a <strong class="text-slate-900 dark:text-white font-semibold">Bachelor of Engineering in Computer Science and Engineering</strong>. I am deeply interested in software engineering, AI-powered applications, prompt engineering, and DevOps practices.
+            </p>
+            <p>
+              I enjoy collaborating with teams, breaking down real-world challenges, and exploring how emerging technologies can simplify everyday tasks. Currently, I am sharpening my core development and algorithmic skills through academic coursework, coding club initiatives, and personal projects.
+            </p>
+          </div>
+
+          <!-- Highlights Box -->
+          <div class="lg:col-span-5 rounded-2xl p-6 sm:p-8 bg-white dark:bg-[#0f1626] border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center shrink-0 mt-0.5">
+                <i class="fa-solid fa-compass"></i>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-base">Career Interests</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                  Software Engineer · AI Engineer · Prompt Engineer · DevOps
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i class="fa-solid fa-comments"></i>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-base">Languages</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                  Kannada and English
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i class="fa-solid fa-code-branch"></i>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-base">Learning Approach</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                  Hands-on project building, team collaboration, and continuous practice
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 scroll-mt-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mb-12">
+          <span class="text-xs font-bold uppercase tracking-widest text-emerald-500">Academic Journey</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold mt-2">Education</h2>
+          <p class="text-slate-600 dark:text-slate-400 mt-3">
+            My academic background and key educational milestones.
+          </p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="relative border-l-2 border-slate-200 dark:border-slate-800 ml-3 sm:ml-6 space-y-8 max-w-4xl">
+          <!-- Item 1 -->
+          <div class="relative pl-8 sm:pl-10">
+            <span class="absolute -left-[9px] top-6 w-4 h-4 rounded-full bg-emerald-500 ring-4 ring-slate-50 dark:ring-[#080c16]"></span>
+            <div class="rounded-2xl p-6 sm:p-7 bg-white dark:bg-[#0f1626] border border-slate-200 dark:border-slate-800 shadow-sm hover:border-emerald-500/50 transition-colors">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                  2024 – 2028
+                </span>
+                <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                  Expected Graduation: 2028
+                </span>
+              </div>
+              <h3 class="font-display text-xl font-bold">B.E. – Computer Science and Engineering</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">
+                Navodaya Institute of Technology · Visvesvaraya Technological University (VTU)
+              </p>
+              <div class="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm font-semibold">
+                <i class="fa-solid fa-award text-emerald-500"></i>
+                <span>Current CGPA: <strong class="text-emerald-500">7.83</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="relative pl-8 sm:pl-10">
+            <span class="absolute -left-[9px] top-6 w-4 h-4 rounded-full bg-sky-400 ring-4 ring-slate-50 dark:ring-[#080c16]"></span>
+            <div class="rounded-2xl p-6 sm:p-7 bg-white dark:bg-[#0f1626] border border-slate-200 dark:border-slate-800 shadow-sm hover:border-sky-400/50 transition-colors">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-sky-500/10 text-sky-600 dark:text-sky-400">
+                  Class 12
+                </span>
+              </div>
+              <h3 class="font-display text-xl font-bold">Pre-University Education</h3>
+              <div class="mt-3 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm font-semibold">
+                <i class="fa-solid fa-chart-line text-sky-400"></i>
+                <span>Percentage: <strong class="text-sky-400">85.55%</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="relative pl-8 sm:pl-10">
+            <span class="absolute -left-[9px] top-6 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-slate-50 dark:ring-[#080c16]"></span>
+            <div class="rounded-2xl p-6 sm:p-7 bg-white dark:bg-[#0f1626] border border-slate-200 dark:border-slate-800 shadow-sm hover:border-slate-400/50 transition-colors">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                  Class 10
+                </span>
+              </div>
+              <h3 class="font-display text-xl font-bold">Secondary Education</h3>
+              <div class="mt-3 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm font-semibold">
+                <i class="fa-solid fa-star text-amber-400"></i>
+                <span>Percentage: <strong class="text-emerald-500">92.48%</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills" class="py-20 bg-slate-100/70 dark:bg-[#0b101d]/70 border-y border-slate-200/70 dark:border-slate-800/60 scroll-mt-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mb-12">
+          <span class="text-xs font-bold uppercase tracking-widest text-emerald-500">What I'm Learning</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold mt-2">Technical Skills</h2>
+          <p class="text-slate-600 dark:text-slate-400 mt-3">
+            Core programming languages and foundational computer science skills developed through coursework and hands-on practice.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <!-- Skill 1: C -->
+          <div class="group rounded-2xl p-6 bg-white dark:bg-[#0f1626] border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all hover:-translate-y-1 shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center font-display font-bold text-xl mb-4 group-hover:scale-110 transition-transform">
+              C
+            </div>
+            <h3 class="font-display font-bold text-lg">C Programming</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Structured programming, memory fundamentals & logic</p>
+          </div>
+
+          <!-- Skill 2: C++ -->
+          <div class="group rounded-2xl p-6 bg-white dark:bg-[#0f1626] border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all hover:-translate-y-1 shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-display font-bold text-lg mb-4 group-hover:scale-110 transition-transform">
+              C++
+            </div>
+            <h3 class="font-display font-bold text-lg">C++</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Object-oriented programming & STL problem solving</p>
+          </div>
+
+          <!-- Skill 3: Java -->
+          <div class="group rounded-2xl p-6 bg-white dark:bg-[#0f1626] border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all hover:-translate-y-1 shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+              <i class="fa-brands fa-java"></i>
+            </div>
+            <h3 class="font-display font-bold text-lg">Java</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Core OOP concepts & application development</p>
+          </div>
+
+          <!-- Skill 4: Python -->
+          <div class="group rounded-2xl p-6 bg-white dark:bg-[#0f1626] border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all hover:-translate-y-1 shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+              <i class="fa-brands fa-python"></i>
+            </div>
+            <h3 class="font-display font-bold text-lg">Python</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Scripting, AI prototyping & rapid development</p>
+          </div>
+
+          <!-- Skill 5: DSA -->
+          <div class="group rounded-2xl p-6 bg-white dark:bg-[#0f1626] border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all hover:-translate-y-1 shadow-sm sm:col-span-2 lg:col-span-1">
+            <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-diagram-project"></i>
+            </div>
+            <h3 class="font-display font-bold text-lg">Data Structures & Algorithms</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Algorithmic thinking, complexity & optimization</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 scroll-mt-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          <div class="max-w-2xl">
+            <span class="text-xs font-bold uppercase tracking-widest text-emerald-500">Things I've Worked On</span>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold mt-2">Projects</h2>
+            <p class="text-slate-600 dark:text-slate-400 mt-3">
+              A selection of academic, group, and ongoing projects. Click any project to view full details.
+            </p>
+          </div>
+
+          <!-- Interactive Filter Buttons -->
+          <div class="flex flex-wrap gap-2" role="group" aria-label="Filter projects">
+            <button data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-500 text-slate-950 transition-all">
+              All Projects (4)
+            </button>
+            <button data-filter="ai" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#0f1626] border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-emerald-500 transition-all">
+              AI & Smart Tech
+            </button>
+            <button data-filter="academic" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#0f1626] border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-emerald-500 transition-all">
+              Academic & Group
+            </button>
+          </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Rendered dynamically via JavaScript for clean modal binding and filtering -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-slate-100/70 dark:bg-[#0b101d]/70 border-t border-slate-200/70 dark:border-slate-800/60 scroll-mt-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mb-12">
+          <span class="text-xs font-bold uppercase tracking-widest text-emerald-500">Let's Connect</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold mt-2">Contact</h2>
+          <p class="text-slate-600 dark:text-slate-400 mt-3">
+            Have an opportunity, collaboration idea, or just want to connect? Feel free to reach out.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Contact Info Cards -->
+          <div class="lg:col-span-5 space-y-4">
+            <!-- Email Card with Copy Action -->
+            <div class="rounded-2xl p-5 bg-white dark:bg-[#0f1626] border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4">
+              <div class="flex items-center gap-4 min-w-0">
+                <div class="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center shrink-0">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="min-w-0">
+                  <div class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Email</div>
+                  <a href="mailto:vedakulkarni2006@gmail.com" class="text-sm sm:text-base font-medium hover:text-emerald-500 transition-colors truncate block">
+                    vedakulkarni2006@gmail.com
+                  </a>
+                </div>
+              </div>
+              <button id="copyEmailBtn" type="button" title="Copy email address" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-emerald-500/15 text-slate-600 dark:text-slate-300 hover:text-emerald-500 border border-slate-200 dark:border-slate-800 transition-colors shrink-0">
+                <i id="copyIcon" class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+
+            <!-- LinkedIn Card -->
+            <a href="https://www.linkedin.com/in/venkat-bai-kulkarni-536826431" target="_blank" rel="noopener noreferrer" class="rounded-2xl p-5 bg-white dark:bg-[#0f1626] border border-slate-200 dark:border-slate-800 hover:border-sky-400 transition-colors flex items-center justify-between gap-4 group">
+              <div class="flex items-center gap-4">
+                <div class="w-11 h-11 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center shrink-0">
+                  <i class="fa-brands fa-linkedin-in text-lg"></i>
+                </div>
+                <div>
+                  <div class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">LinkedIn</div>
+                  <div class="text-sm sm:text-base font-medium group-hover:text-sky-400 transition-colors">
+                    Connect with me on LinkedIn
+                  </div>
+                </div>
+              </div>
+              <i class="fa-solid fa-arrow-up-right-from-square text-slate-400 group-hover:text-sky-400 transition-colors"></i>
+            </a>
+
+            <!-- Location Card -->
+            <div class="rounded-2xl p-5 bg-white dark:bg-[#0f1626] border border-slate-200 dark:border-slate-800 flex items-center gap-4">
+              <div class="w-11 h-11 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <div class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Location</div>
+                <div class="text-sm sm:text-base font-medium">India</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="lg:col-span-7">
+            <form id="contactForm" class="rounded-2xl p-6 sm:p-8 bg-white dark:bg-[#0f1626] border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="senderName" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Your Name</label>
+                  <input id="senderName" type="text" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:border-emerald-500 focus:outline-none text-sm transition-colors" />
+                </div>
+                <div>
+                  <label for="senderEmail" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Your Email</label>
+                  <input id="senderEmail" type="email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:border-emerald-500 focus:outline-none text-sm transition-colors" />
+                </div>
+              </div>
+
+              <div>
+                <label for="senderMessage" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Message</label>
+                <textarea id="senderMessage" rows="4" required placeholder="Hi Venkat, I'd love to discuss a project or opportunity..." class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:border-emerald-500 focus:outline-none text-sm transition-colors resize-y"></textarea>
+              </div>
+
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
+                <button type="submit" class="px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-sm shadow-lg shadow-emerald-500/20 transition-all inline-flex items-center justify-center gap-2">
+                  <span>Send Message</span>
+                  <i class="fa-solid fa-paper-plane text-xs"></i>
+                </button>
+                <span class="text-xs text-slate-500 dark:text-slate-400">
+                  Opens your default email client with pre-filled details.
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-8 border-t border-slate-200 dark:border-slate-800/80 text-center text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>© <span id="currentYear"></span> Venkat Bai Kulkarni. All rights reserved.</p>
+      <div class="flex items-center gap-5">
+        <a href="mailto:vedakulkarni2006@gmail.com" class="hover:text-emerald-500 transition-colors">Email</a>
+        <a href="https://www.linkedin.com/in/venkat-bai-kulkarni-536826431" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-500 transition-colors">LinkedIn</a>
+        <a href="#home" class="hover:text-emerald-500 transition-colors">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Project Detail Modal -->
+  <div id="projectModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/75 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="relative w-full max-w-lg rounded-3xl bg-white dark:bg-[#0f1626] border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xl transform transition-all">
+      <button id="closeModalBtn" aria-label="Close modal" class="absolute top-5 right-5 w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:text-emerald-500 flex items-center justify-center transition-colors">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="flex items-center gap-3 mb-4">
+        <span id="modalIcon" class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xl"></span>
+        <span id="modalStatus" class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20"></span>
+      </div>
+
+      <h3 id="modalTitle" class="font-display text-2xl font-bold mb-3"></h3>
+      <p id="modalDescription" class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-5"></p>
+
+      <div class="p-4 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-slate-200/70 dark:border-slate-800 mb-5">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Key Focus & Highlights</h4>
+        <ul id="modalHighlights" class="space-y-1.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300 list-disc list-inside"></ul>
+      </div>
+
+      <div id="modalTags" class="flex flex-wrap gap-2"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification (Replaces alert()) -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 hidden items-center gap-3 px-4 py-3 rounded-xl bg-slate-900 dark:bg-emerald-500 text-white dark:text-slate-950 text-sm font-semibold shadow-xl transition-all">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMessage">Copied to clipboard!</span>
+  </div>
+
+  <script>
+    // Structured Portfolio Project Data
+    const projectsData = [
+      {
+        id: 'farmer-chatbot',
+        title: 'Farmer Support AI Chatbot',
+        status: 'In progress',
+        category: ['ai'],
+        iconClass: 'fa-solid fa-seedling',
+        accentClass: 'text-emerald-500 bg-emerald-500/10',
+        summary: 'An AI-based agriculture support concept designed to help farmers access useful information and guidance through a conversational interface.',
+        highlights: [
+          'Conversational interface tailored for accessible agricultural queries',
+          'Focus on actionable crop guidance and timely farmer support',
+          'Built as a modern web application concept'
+        ],
+        tags: ['AI', 'Agriculture', 'Web Application']
+      },
+      {
+        id: 'smart-agriculture',
+        title: 'Smart Agriculture System',
+        status: 'Academic project',
+        category: ['academic'],
+        iconClass: 'fa-solid fa-wheat-awn',
+        accentClass: 'text-amber-400 bg-amber-500/10',
+        summary: 'A group project using environmental and soil-condition sensors to monitor farm conditions and alert farmers when watering may be needed.',
+        highlights: [
+          'Real-time soil moisture and environmental condition sensing',
+          'Automated alert mechanism for timely irrigation decisions',
+          'Collaborative team-based engineering implementation'
+        ],
+        tags: ['IoT concept', 'Sensors', 'Teamwork']
+      },
+      {
+        id: 'workplace-safety',
+        title: 'AI Workplace Safety Monitoring',
+        status: 'Prototype / academic',
+        category: ['ai', 'academic'],
+        iconClass: 'fa-solid fa-helmet-safety',
+        accentClass: 'text-sky-400 bg-sky-500/10',
+        summary: 'A platform concept for identifying workplace hazards and PPE violations from camera feeds, with alerts and incident tracking.',
+        highlights: [
+          'Automated detection of Personal Protective Equipment (PPE) compliance',
+          'Instant hazard alerting workflow for workplace supervisors',
+          'Structured incident logging and safety monitoring dashboard concept'
+        ],
+        tags: ['Artificial Intelligence', 'Safety', 'Monitoring']
+      },
+      {
+        id: 'road-damage',
+        title: 'AI Road Damage Reporting System',
+        status: 'Group project',
+        category: ['ai', 'academic'],
+        iconClass: 'fa-solid fa-road',
+        accentClass: 'text-purple-400 bg-purple-500/10',
+        summary: 'A coding-club project idea focused on using AI-assisted reporting to help identify and communicate damaged road conditions.',
+        highlights: [
+          'AI-assisted categorization of road surface damage',
+          'Civic technology approach to streamline municipal reporting',
+          'Developed collaboratively as part of coding club initiatives'
+        ],
+        tags: ['AI concept', 'Civic technology', 'Coding Club']
+      }
+    ];
+
+    // DOM Elements
+    const projectsGrid = document.getElementById('projectsGrid');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectModal = document.getElementById('projectModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toastMessage');
+
+    // Helper: Show non-intrusive toast notification
+    let toastTimeout;
+    function showToast(msg) {
+      toastMessage.textContent = msg;
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 3000);
+    }
+
+    // Render Project Cards
+    function renderProjects(filter = 'all') {
+      const filtered = filter === 'all'
+        ? projectsData
+        : projectsData.filter(p => p.category.includes(filter));
+
+      projectsGrid.innerHTML = filtered.map(project => `
+        <article
+          data-project-id="${project.id}"
+          tabindex="0"
+          role="button"
+          aria-label="View details for ${project.title}"
+          class="project-card group cursor-pointer rounded-2xl p-6 sm:p-7 bg-white dark:bg-[#0f1626] border border-slate-200 dark:border-slate-800 hover:border-emerald-500/70 transition-all hover:-translate-y-1 shadow-sm flex flex-col justify-between"
+        >
+          <div>
+            <div class="flex items-center justify-between gap-3 mb-5">
+              <div class="w-12 h-12 rounded-2xl ${project.accentClass} flex items-center justify-center text-xl group-hover:scale-105 transition-transform">
+                <i class="${project.iconClass}"></i>
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                ${project.status}
+              </span>
+            </div>
+
+            <h3 class="font-display text-xl font-bold group-hover:text-emerald-500 transition-colors mb-2.5">
+              ${project.title}
+            </h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              ${project.summary}
+            </p>
+          </div>
+
+          <div class="pt-6 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-2">
+            <div class="flex flex-wrap gap-1.5">
+              ${project.tags.map(tag => `
+                <span class="text-xs font-medium px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300">
+                  ${tag}
+                </span>
+              `).join('')}
+            </div>
+            <span class="text-xs font-semibold text-emerald-500 shrink-0 group-hover:translate-x-0.5 transition-transform">
+              Details →
+            </span>
+          </div>
+        </article>
+      `).join('');
+
+      // Attach click & keyboard listeners to rendered cards
+      document.querySelectorAll('.project-card').forEach(card => {
+        const openHandler = () => {
+          const id = card.getAttribute('data-project-id');
+          openProjectModal(id);
+        };
+        card.addEventListener('click', openHandler);
+        card.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openHandler();
+          }
+        });
+      });
+    }
+
+    // Open Project Detail Modal
+    function openProjectModal(projectId) {
+      const project = projectsData.find(p => p.id === projectId);
+      if (!project) return;
+
+      const modalIcon = document.getElementById('modalIcon');
+      modalIcon.className = `w-12 h-12 rounded-2xl ${project.accentClass} flex items-center justify-center text-xl`;
+      modalIcon.innerHTML = `<i class="${project.iconClass}"></i>`;
+
+      document.getElementById('modalStatus').textContent = project.status;
+      document.getElementById('modalTitle').textContent = project.title;
+      document.getElementById('modalDescription').textContent = project.summary;
+
+      document.getElementById('modalHighlights').innerHTML = project.highlights
+        .map(item => `<li>${item}</li>`)
+        .join('');
+
+      document.getElementById('modalTags').innerHTML = project.tags
+        .map(tag => `<span class="text-xs font-semibold px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300">${tag}</span>`)
+        .join('');
+
+      projectModal.classList.remove('hidden');
+      projectModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProjectModal() {
+      projectModal.classList.add('hidden');
+      projectModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    closeModalBtn.addEventListener('click', closeProjectModal);
+    projectModal.addEventListener('click', e => {
+      if (e.target === projectModal) closeProjectModal();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !projectModal.classList.contains('hidden')) {
+        closeProjectModal();
+      }
+    });
+
+    // Project Filtering Logic
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => {
+          b.classList.remove('active', 'bg-emerald-500', 'text-slate-950');
+          b.classList.add('bg-white', 'dark:bg-[#0f1626]', 'border', 'border-slate-200', 'dark:border-slate-800', 'text-slate-700', 'dark:text-slate-300');
+        });
+        btn.classList.add('active', 'bg-emerald-500', 'text-slate-950');
+        btn.classList.remove('bg-white', 'dark:bg-[#0f1626]', 'border', 'border-slate-200', 'dark:border-slate-800', 'text-slate-700', 'dark:text-slate-300');
+
+        renderProjects(btn.getAttribute('data-filter'));
+      });
+    });
+
+    // Copy Email to Clipboard (using textarea fallback compatible with iframes)
+    document.getElementById('copyEmailBtn').addEventListener('click', () => {
+      const email = 'vedakulkarni2006@gmail.com';
+      const tempInput = document.createElement('textarea');
+      tempInput.value = email;
+      tempInput.style.position = 'fixed';
+      tempInput.style.opacity = '0';
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
+        const copyIcon = document.getElementById('copyIcon');
+        copyIcon.className = 'fa-solid fa-check text-emerald-500';
+        showToast('Email copied: vedakulkarni2006@gmail.com');
+        setTimeout(() => {
+          copyIcon.className = 'fa-regular fa-copy';
+        }, 2000);
+      } catch (err) {
+        showToast('Email: vedakulkarni2006@gmail.com');
+      } finally {
+        document.body.removeChild(tempInput);
+      }
+    });
+
+    // Contact Form Submission (mailto handler)
+    document.getElementById('contactForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const name = document.getElementById('senderName').value.trim();
+      const email = document.getElementById('senderEmail').value.trim();
+      const message = document.getElementById('senderMessage').value.trim();
+
+      const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
+      const body = encodeURIComponent(`${message}\n\n---\nFrom: ${name}\nEmail: ${email}`);
+      showToast('Opening your email client...');
+      window.location.href = `mailto:vedakulkarni2006@gmail.com?subject=${subject}&body=${body}`;
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.toggle('hidden');
+      mobileMenuBtn.setAttribute('aria-expanded', String(!isHidden));
+      mobileMenuIcon.className = isHidden ? 'fa-solid fa-bars text-base' : 'fa-solid fa-xmark text-base';
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuIcon.className = 'fa-solid fa-bars text-base';
+      });
+    });
+
+    // Theme Toggle (Light / Dark Mode)
+    const htmlEl = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeToggleMobile = document.getElementById('themeToggleMobile');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeIconMobile = document.getElementById('themeIconMobile');
+
+    function updateThemeIcons() {
+      const isDark = htmlEl.classList.contains('dark');
+      const iconClass = isDark ? 'fa-solid fa-sun text-sm' : 'fa-solid fa-moon text-sm';
+      themeIcon.className = iconClass;
+      themeIconMobile.className = iconClass;
+    }
+
+    function toggleTheme() {
+      htmlEl.classList.toggle('dark');
+      updateThemeIcons();
+    }
+
+    themeToggle.addEventListener('click', toggleTheme);
+    themeToggleMobile.addEventListener('click', toggleTheme);
+
+    // Active Section Scroll Spy
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const activeId = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            const isMatch = link.getAttribute('href') === `#${activeId}`;
+            link.classList.toggle('text-emerald-500', isMatch);
+            link.classList.toggle('text-slate-600', !isMatch);
+            link.classList.toggle('dark:text-slate-300', !isMatch);
+          });
+        }
+      });
+    }, { rootMargin: '-30% 0px -55% 0px' });
+
+    sections.forEach(sec => observer.observe(sec));
+
+    // Initialize Page
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    renderProjects('all');
+  </script>
+</body>
+</html>
